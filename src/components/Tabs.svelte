@@ -1,6 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { default as ReduxCounter } from "../redux/Counter.svelte";
+  import { default as ValtioCounter } from "../valtio/Counter.svelte";
+  import { default as XstateCounter } from "../xstate/Counter.svelte";
+  import { default as ImmerCounter } from "../immer/Counter.svelte";
+  import { default as RxjsCounter } from "../rxjs/Counter.svelte";
 
   onMount(() => {
     document.getElementById("defaultOpen").click();
@@ -25,9 +29,7 @@
 <div class="tab">
   <button class="tablinks active" on:click="{openCity.bind('Redux')}" id="defaultOpen">Redux</button>
   <button class="tablinks" on:click="{openCity.bind('Valtio')}">Valtio</button>
-  <button class="tablinks" on:click="{openCity.bind('Redux-2')}">Redux-2</button>
-  <button class="tablinks" on:click="{openCity.bind('XState')}">Valtio</button>
-  <button class="tablinks" on:click="{openCity.bind('DOM')}">DOM</button>
+  <button class="tablinks" on:click="{openCity.bind('XState')}">XState</button>
   <button class="tablinks" on:click="{openCity.bind('Immer')}">Immer</button>
   <button class="tablinks" on:click="{openCity.bind('RxJs')}">RxJs</button>
   <button class="tablinks" on:click="{openCity.bind('Custom')}">Custom</button>
@@ -40,32 +42,22 @@
 
 <div id="Valtio" class="tabcontent">
   <h3>Valtio</h3>
-  <p>Valtio is the capital of Japan.</p>
-</div>
-
-<div id="Redux-2" class="tabcontent">
-  <h3>Redux-2</h3>
-  <p>Redux-2 is the capital of France.</p> 
+  <ValtioCounter />
 </div>
 
 <div id="XState" class="tabcontent">
   <h3>XState</h3>
-  <p>XState is the capital of Japan.</p>
-</div>
-
-<div id="DOM" class="tabcontent">
-  <h3>DOM</h3>
-  <p>DOM is the capital of France.</p> 
+  <XstateCounter />
 </div>
 
 <div id="Immer" class="tabcontent">
   <h3>Immer</h3>
-  <p>Immer is the capital of Japan.</p>
+  <ImmerCounter />
 </div>
 
 <div id="RxJs" class="tabcontent">
   <h3>RxJs</h3>
-  <p>RxJs is the capital of France.</p> 
+  <RxjsCounter />
 </div>
 
 <div id="Custom" class="tabcontent">
