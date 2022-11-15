@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [
     svelte({
       experimental: {
-        inspector: true
+        inspector: {
+          holdMode: true,
+          showToggleButton: 'always',
+          toggleButtonPos: 'bottom-left',
+        },
       }
     })
   ]
