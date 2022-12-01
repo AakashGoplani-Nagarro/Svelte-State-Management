@@ -5,6 +5,7 @@
   import { default as XstateCounter } from "../xstate/Counter.svelte";
   import { default as ImmerCounter } from "../immer/Counter.svelte";
   import { default as RxjsCounter } from "../rxjs/Counter.svelte";
+  import { default as CustomCounter } from "../custom/Counter.svelte";
 
   onMount(() => {
     document.getElementById("defaultOpen").click();
@@ -62,7 +63,7 @@
 
 <div id="Custom" class="tabcontent">
   <h3>Custom</h3>
-  <p>Custom is the capital of Japan.</p>
+  <CustomCounter />
 </div>
 
 <style lang="scss">

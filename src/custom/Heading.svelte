@@ -1,14 +1,7 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { value, subscribe } from './store';
+  import { heading } from './store';
 
-  let _heading = value || 'Redux Store';
-
-  onMount(() => {
-		return subscribe(() => {
-			_heading = value;
-		});
-	});
+  $: _heading = $heading || 'Custom Store';
 </script>
 
 <div class="heading">

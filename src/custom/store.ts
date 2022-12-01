@@ -1,55 +1,36 @@
-import { createStore } from 'redux';
+import { writable } from "svelte/store";
+import { reduxify } from "./reduxify";
 
-(window as any).process = { env: { NODE_ENV: 'production'}};
+const initialCount: number = 0;
+const initialHeading: string = "Custom Store";
 
-function reducer(state = 0, action) {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
+const counterReducer = () => {
+  const { subscribe, update, set } = writable<number>(initialCount);
 
-    case 'DECREMENT':
-      return state - 1
+  const actions = {
+    increment: () => update((c) => c + 1),
+    decrement: () => update((c) => c - 1),
+    reset: () => set(0),
+  };
 
-    default:
-      return state
-  }
-}
+  return reduxify({
+    subscribe,
+    ...actions,
+  });
+};
 
-function svelteStoreEnhancer(createStoreApi) {
-	return function (reducer, initialState) {
-		const reduxStore = createStoreApi(
-			reducer, initialState
-		);
-		return {
-			...reduxStore,
-			subscribe(fn) {
-				fn(reduxStore.getState());
+const headingReducer = () => {
+  const { subscribe, set } = writable<string>(initialHeading);
 
-				return reduxStore.subscribe(() => {
-					fn(reduxStore.getState());
-				});
-			}
-		}
-	}
-}
+  const actions = {
+    update: (newValue: string) => set(newValue),
+  };
 
-export let value = 'Svelte Store';
-let subscribers = [];
+  return reduxify({
+    subscribe,
+    ...actions,
+  });
+};
 
-export function update(newValue: string) {
-  value = newValue;
-
-  subscribers.forEach(fn => {
-		fn();
-	});
-}
-
-export function subscribe(fn) {
-	subscribers.push(fn);
-	
-	return function unsubscribe() {
-		subscribers.splice(subscribers.indexOf(fn), 1)
-	}
-}
-
-export default createStore(reducer, svelteStoreEnhancer);
+export const count = counterReducer();
+export const heading = headingReducer();

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { update, value } from "./store";
+  import { heading } from "./store";
 
-  let _heading = value || 'Redux Store';
+  let _heading = $heading || 'Custom Store';
 </script>
 
 <div class="input">
   <label for="heading">Edit heading: </label>
-  <input type="text" bind:value={_heading} on:input={() => { update(_heading); }}>
+  <input type="text" bind:value={_heading} on:input={() => { heading.update(_heading); }}>
 </div>
 
 <style lang="scss">
