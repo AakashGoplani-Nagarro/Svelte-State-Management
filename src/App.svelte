@@ -10,6 +10,10 @@
   <section>
     <Tabs />
   </section>
+
+  <footer>
+    <span>Repo: https://github.com/AakashGoplani-Nagarro/Svelte-State-Management</span>
+  </footer>
 </main>
 
 <style lang="scss">
