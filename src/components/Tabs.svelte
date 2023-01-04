@@ -6,6 +6,7 @@
   import { default as ImmerCounter } from "../immer/Counter.svelte";
   import { default as RxjsCounter } from "../rxjs/Counter.svelte";
   import { default as CustomCounter } from "../custom/Counter.svelte";
+  import { default as Screen } from "../dom/Screen.svelte";
 
   onMount(() => {
     document.getElementById("defaultOpen").click();
@@ -34,6 +35,7 @@
   <button class="tablinks" on:click="{openCity.bind('Immer')}">Immer</button>
   <button class="tablinks" on:click="{openCity.bind('RxJs')}">RxJs</button>
   <button class="tablinks" on:click="{openCity.bind('Custom')}">Custom</button>
+  <button class="tablinks" on:click="{openCity.bind('Dom')}">DOM</button>
 </div>
 
 <div id="Redux" class="tabcontent">
@@ -64,6 +66,11 @@
 <div id="Custom" class="tabcontent">
   <h3>Custom</h3>
   <CustomCounter />
+</div>
+
+<div id="Dom" class="tabcontent">
+  <h3>DOM</h3>
+  <Screen />
 </div>
 
 <style lang="scss">
