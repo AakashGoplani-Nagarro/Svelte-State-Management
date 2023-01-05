@@ -7,6 +7,7 @@
   import { default as RxjsCounter } from "../rxjs/Counter.svelte";
   import { default as CustomCounter } from "../custom/Counter.svelte";
   import { default as Screen } from "../dom/Screen.svelte";
+  import { default as AsyncCustomCounter } from "../custom_async/Counter.svelte";
 
   onMount(() => {
     document.getElementById("defaultOpen").click();
@@ -36,6 +37,7 @@
   <button class="tablinks" on:click="{openCity.bind('RxJs')}">RxJs</button>
   <button class="tablinks" on:click="{openCity.bind('Custom')}">Custom</button>
   <button class="tablinks" on:click="{openCity.bind('Dom')}">DOM</button>
+  <button class="tablinks" on:click="{openCity.bind('Async')}">Async</button>
 </div>
 
 <div id="Redux" class="tabcontent">
@@ -71,6 +73,11 @@
 <div id="Dom" class="tabcontent">
   <h3>DOM</h3>
   <Screen />
+</div>
+
+<div id="Async" class="tabcontent">
+  <h3>Async</h3>
+  <AsyncCustomCounter />
 </div>
 
 <style lang="scss">
